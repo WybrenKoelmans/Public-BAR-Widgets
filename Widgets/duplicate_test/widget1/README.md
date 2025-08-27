@@ -1,0 +1,1 @@
+We now have two `widget1` widgets, this should make the PR check fail!
