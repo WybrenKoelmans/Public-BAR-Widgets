@@ -1,47 +1,49 @@
-# So You Want to Add a Widget to the Hub
+# How to Contribute a New Widget
 
-## Steps
-Make sure you replace all text in the angle brackets <>.
+There are **two ways** to contribute:
 
-* Fork this repository
+1. **Direct Contribution:**
+  - Add your widget directly to this repository under `Widgets/community/<your_widget_id>` (simplest) by forking this repository. Create and maintain your widgets in your fork, and make a pull request to the main repository to update your widget in the hub.
 
-TODO: Add image here
+2. **External Repository:**
+  - Maintain your own repository and link it to this repository by adding a git submodule.
+    - Fork this repository and add a git submodule to your own repository, then create a PR to add your submodule to the hub.
+    - **Note:** If you have multiple widgets in the same repository, *each update* will require *all* widgets to be approved at the same time, which can slow down the process.
 
-* Clone your fork
+
+# Required Widget Structure
+
 ```
-git clone https://github.com/<your_user_name>/Public-BAR-Widgets
-cd Public-BAR-Widgets
+<your_widget_id>/
+  ├─ <your_widget_id>.lua   # Main widget code
+  ├─ cover.png              # PNG image (~400x400) showcasing your widget
+  ├─ README.md              # Detailed explanation of your widget
+  ├─ manifest.json          # Technical data about your widget (see below)
+  └─ <other_files_allowed_up_to_a_point> # You are not limited to a single file, but try to keep it within reason
 ```
 
-* Add your widget as a submodule
-```
-git submodule add https://github.com/<your_user_name>/<your_widget_repo> Widgets/<your_widget_repo>
-```
 
-* Add a cover image to `Public-Bar-Widgets/widget_cover_images/<your_widget_name>.png`
-* Add a metadata file at `Public-Bar-Widgets/widget_metadata/<your_widget_name>.json`
-```
+Please follow the naming conventions used by other widgets. While there are no strict rules, use prefixes such as `gui_`, `cmd_`, or `unit_` to indicate the scope of your widget. Use `gui_lower_snake_case` for consistency.
+
+
+
+## manifest.json
+
+Ensure your `id` is globally unique; avoid using common or generic IDs.
+
+Your `manifest.json` must include the following fields:
+
+```json
 {
-	"display_name": "<your_widget_name>",
-	"author": "<your_name_nickname_or_tag>",
-	"submodule_path": "Widgets/<your_widget_repo>",
-	"discord_link": "<link_to_discord_post_about_your_widget>",
-	"description": "A short description",
-	"cover_image_path": "widget_cover_images/<your_widget_name>.png",
-	"entry_point": "/"
+  "id": "<your_widget_id>",
+  "display_name": "A Pretty Display Name",
+  "author": "YourUserName",
+  "discord_link": "https://discord.com/channels/12345/12345",
+  "github_link": "https://github.com/beyond-all-reason/Beyond-All-Reason/pull/5309",
+  "description": "A SHORT description that summarizes your widget."
 }
 ```
 
-* Push your changes to the fork
-```
-git add *
-git commit -m "Add <your_widget_name> to the widget hub."
-git push
-```
+# What is Allowed?
 
-* On your forks github page click `contribute` -> `open pull request`
-
-TODO: Add image here
-
-## Notes on the metadata format
-TODO
+Currently, all widgets are manually vetted and moderated by a group of contributors. Widgets that are clear violations of the Game Design Document will be rejected. Please do not engage in discussion about moderation in this repository. Instead, use the appropriate channels on the BAR Discord server.
