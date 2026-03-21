@@ -1,0 +1,8 @@
+{
+	"id": "gui_ping_wheel",
+	"display_name": "Ping Wheel",
+	"author": "Errrrrrr",
+	"discord_link": "https://discord.com/channels/549281623154229250/1121129869565239306",
+	"github_link": "https://github.com/zxbc/BAR_widgets/blob/main/gui_ping_wheel.lua",
+	"description": "Displays a ping wheel when a keybind is held down."
+}
