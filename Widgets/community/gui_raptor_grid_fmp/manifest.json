@@ -1,0 +1,9 @@
+{
+	"id": "gui_raptor_grid_fmp",
+	"version": "1.0.0",
+	"display_name": "Raptor Grid Draw 12 players (Full Metal Plate 1.7)",
+	"author": "Lu5ck",
+	"discord_link": "https://discord.com/channels/549281623154229250/1378300338888773684",
+	"github_link": "https://gist.github.com/Lu5ck/871f32dec6fa3821351ce037a2980e8b",
+	"description": "Draws fairly distributed build border for 12 players raptor mode on Full Metal Plate 1.7 map."
+}
