@@ -1,0 +1,9 @@
+{
+	"id": "gui_battle_resource_tracker",
+	"version": "1.0.0",
+	"display_name": "Battle Resource Tracker",
+	"author": "citrine",
+	"discord_link": "https://discord.com/channels/549281623154229250/1128770111705202789",
+	"github_link": "https://gist.github.com/salinecitrine/7f6e21ed304eeaba9ad4a122019c0d82",
+	"description": "Shows the resource gains/losses in battles."
+}
