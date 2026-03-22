@@ -1,0 +1,9 @@
+{
+	"id": "gui_metal_tracker",
+	"version": "0.4.0",
+	"display_name": "Metal Tracker",
+	"author": "Mr_Chinny",
+	"discord_link": "https://discord.com/channels/549281623154229250/1262082209817296909",
+	"github_link": "https://github.com/DrChinny/BAR-Widgets/blob/main/metal_tracker.lua",
+	"description": "Tracks and displays resources sent to you."
+}
