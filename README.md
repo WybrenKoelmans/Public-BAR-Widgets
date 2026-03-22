@@ -36,6 +36,7 @@ Your `manifest.json` must include the following fields:
 ```json
 {
   "id": "<your_widget_id>",
+  "version": "1.0.0",
   "display_name": "A Pretty Display Name",
   "author": "YourUserName",
   "discord_link": "https://discord.com/channels/12345/12345",
