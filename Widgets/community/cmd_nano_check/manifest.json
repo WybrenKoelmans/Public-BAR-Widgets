@@ -1,0 +1,9 @@
+{
+	"id": "cmd_nano_check",
+	"version": "1.5.0",
+	"display_name": "Construction Turrets Range Check",
+	"author": "Nehroz",
+	"discord_link": "https://discord.com/channels/549281623154229250/1283987575652220978",
+	"github_link": "https://gitlab.com/Nehroz/bar-widgets/-/blob/main/nano_check.lua",
+	"description": "Stops construction turrets from being assigned to constructions out of reach."
+}
