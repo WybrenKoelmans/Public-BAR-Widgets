@@ -20,6 +20,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
+          fetch-depth: 0
+
+      - name: Fetch full submodule history
+        run: git submodule foreach 'git fetch --unshallow 2>/dev/null || true'
 
       - name: Build 'build' folder
         run: |
