@@ -5,5 +5,6 @@
 	"author": "Nehroz",
 	"discord_link": "https://discord.com/channels/549281623154229250/1283987575652220978",
 	"github_link": "https://gitlab.com/Nehroz/bar-widgets/-/blob/main/nano_check.lua",
-	"description": "Stops construction turrets from being assigned to constructions out of reach."
+	"description": "Stops construction turrets from being assigned to constructions out of reach.",
+	"last_updated": "2024-11-01T00:00:00.000Z"
 }

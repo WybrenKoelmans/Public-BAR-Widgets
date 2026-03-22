@@ -1,6 +1,5 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { execSync } from "node:child_process";
 import { glob } from "glob";
 import archiver from "archiver";
 import sharp from "sharp";
@@ -11,55 +10,17 @@ const WIDGETS_DIR = path.join(ROOT_DIR, "Widgets");
 const DIST_DIR = path.join(BUILD_DIR, "distributions");
 const SITES_DIR = path.join(BUILD_DIR, "sites");
 
+interface Manifest {
+  id: string;
+  last_updated?: string;
+  [key: string]: unknown;
+}
+
 interface WidgetInfo {
   widgetDir: string;
   widgetName: string;
-  manifest: Record<string, unknown> | Record<string, unknown>[];
-  lastCommitDate: number;
-}
-
-function getLastCommitTimestamp(widgetDir: string): number {
-  // 1. Try git log from within the widget directory first (uses submodule's own
-  //    git history when inside a submodule, giving per-widget dates)
-  try {
-    const timestamp = execSync(`git log -1 --format=%ct -- .`, {
-      cwd: widgetDir,
-      encoding: "utf-8",
-      stdio: ["pipe", "pipe", "pipe"],
-    }).trim();
-    if (timestamp) return parseInt(timestamp, 10);
-  } catch {
-    // ignore
-  }
-
-  // 2. Try git log from the parent repo (works for non-submodule paths)
-  try {
-    const relativePath = path.relative(ROOT_DIR, widgetDir);
-    const timestamp = execSync(
-      `git log -1 --format=%ct -- "${relativePath}"`,
-      { cwd: ROOT_DIR, encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] }
-    ).trim();
-    if (timestamp) return parseInt(timestamp, 10);
-  } catch {
-    // ignore
-  }
-
-  // 3. Fall back to filesystem mtime of the most recently modified file
-  return getNewestMtime(widgetDir);
-}
-
-function getNewestMtime(dir: string): number {
-  let newest = 0;
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      newest = Math.max(newest, getNewestMtime(full));
-    } else {
-      const mtime = Math.floor(fs.statSync(full).mtimeMs / 1000);
-      newest = Math.max(newest, mtime);
-    }
-  }
-  return newest;
+  manifest: Manifest | Manifest[];
+  lastUpdated: number;
 }
 
 function findFile(dir: string, name: string, maxDepth: number): string | null {
@@ -127,19 +88,24 @@ async function main() {
     }
     processedWidgets.add(widgetName);
 
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
-    const lastCommitDate = getLastCommitTimestamp(widgetDir);
+    const manifest: Manifest | Manifest[] = JSON.parse(
+      fs.readFileSync(manifestPath, "utf-8")
+    );
+    const firstManifest = Array.isArray(manifest) ? manifest[0] : manifest;
+    const lastUpdated = firstManifest?.last_updated
+      ? new Date(firstManifest.last_updated).getTime()
+      : 0;
 
-    widgets.push({ widgetDir, widgetName, manifest, lastCommitDate });
+    widgets.push({ widgetDir, widgetName, manifest, lastUpdated });
   }
 
-  // Sort by last commit date (most recent first)
-  widgets.sort((a, b) => b.lastCommitDate - a.lastCommitDate);
+  // Sort by last_updated (most recent first)
+  widgets.sort((a, b) => b.lastUpdated - a.lastUpdated);
 
-  console.log("Widget order (by last commit date):");
+  console.log("Widget order (by last_updated):");
   for (const w of widgets) {
-    const date = w.lastCommitDate
-      ? new Date(w.lastCommitDate * 1000).toISOString()
+    const date = w.lastUpdated
+      ? new Date(w.lastUpdated).toISOString()
       : "unknown";
     console.log(`  ${w.widgetName}: ${date}`);
   }

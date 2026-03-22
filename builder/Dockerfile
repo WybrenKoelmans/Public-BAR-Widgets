@@ -4,10 +4,6 @@ LABEL org.opencontainers.image.source=https://github.com/WybrenKoelmans/Public-B
 LABEL org.opencontainers.image.description="BAR Workshop builder"
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 
-# Install git (needed for commit date sorting)
-RUN apt-get update && apt-get install -y --no-install-recommends git \
-    && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app/builder
 
 # Install dependencies first (layer caching)
@@ -18,8 +14,5 @@ RUN npm install
 COPY builder/ ./
 
 WORKDIR /app
-
-# Mark /app as safe for git (mounted volume may have different ownership)
-RUN git config --global --add safe.directory /app
 
 CMD ["npx", "--prefix", "builder", "tsx", "builder/src/build.ts"]

@@ -5,5 +5,6 @@
 	"author": "Errrrrrr",
 	"discord_link": "https://discord.com/channels/549281623154229250/1121129869565239306",
 	"github_link": "https://github.com/zxbc/BAR_widgets/blob/main/gui_ping_wheel.lua",
-	"description": "Displays a ping wheel when a keybind is held down."
+	"description": "Displays a ping wheel when a keybind is held down.",
+	"last_updated": "2023-07-26T13:42:24.000Z"
 }

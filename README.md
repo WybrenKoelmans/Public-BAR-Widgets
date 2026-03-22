@@ -41,9 +41,12 @@ Your `manifest.json` must include the following fields:
   "author": "YourUserName",
   "discord_link": "https://discord.com/channels/12345/12345",
   "github_link": "https://github.com/beyond-all-reason/Beyond-All-Reason/pull/5309",
-  "description": "A SHORT description that summarizes your widget."
+  "description": "A SHORT description that summarizes your widget.",
+  "last_updated": "2026-01-01T00:00:00.000Z"
 }
 ```
+
+The `last_updated` field is an ISO 8601 timestamp used to sort widgets by recency. Update it whenever you publish a new version.
 
 # What is Allowed?
 
