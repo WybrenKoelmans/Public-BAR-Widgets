@@ -1,0 +1,9 @@
+{
+	"id": "cmd_squad_selection",
+	"version": "0.1.0",
+	"display_name": "Squad Selection",
+	"author": "Baldric",
+	"discord_link": "https://discord.com/channels/549281623154229250/1483283773939257344",
+	"github_link": "https://github.com/MadeByGabe/squad-selection",
+	"description": "Automagical squad creation and proximity-based selection."
+}
