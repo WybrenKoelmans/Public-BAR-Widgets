@@ -1,0 +1,9 @@
+{
+	"id": "unit_smart_turrets",
+	"version": "0.2.0",
+	"display_name": "Smart Construction Turrets",
+	"author": "AugustinGamarra",
+	"discord_link": "https://discord.com/channels/549281623154229250/1384357665911869562",
+	"github_link": "https://github.com/timuela/BAR-widgets/blob/main/smart_turrets.lua",
+	"description": "Automatically tells your Construction Turrets what to help build."
+}
