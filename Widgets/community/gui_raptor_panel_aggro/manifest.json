@@ -1,0 +1,9 @@
+{
+	"id": "gui_raptor_panel_aggro",
+	"version": "2.0.0",
+	"display_name": "Raptor Stats Panel With Eco Attraction",
+	"author": "tetrisface",
+	"discord_link": "https://discord.com/channels/549281623154229250/1203485910512173096",
+	"github_link": "https://gist.github.com/tetrisface/2f99f5a5b179e3ac42e7e63825880713#file-gui_raptor_panel_aggro-lua",
+	"description": "Shows statistics and progress when fighting vs Raptors."
+}
