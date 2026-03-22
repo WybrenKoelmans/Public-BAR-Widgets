@@ -19,25 +19,26 @@ interface WidgetInfo {
 }
 
 function getLastCommitTimestamp(widgetDir: string): number {
-  // 1. Try git log from the parent repo (works for non-submodule paths)
-  try {
-    const relativePath = path.relative(ROOT_DIR, widgetDir);
-    const timestamp = execSync(
-      `git log -1 --format=%ct -- "${relativePath}"`,
-      { cwd: ROOT_DIR, encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] }
-    ).trim();
-    if (timestamp) return parseInt(timestamp, 10);
-  } catch {
-    // ignore
-  }
-
-  // 2. Try git log from within the widget directory (works for submodules)
+  // 1. Try git log from within the widget directory first (uses submodule's own
+  //    git history when inside a submodule, giving per-widget dates)
   try {
     const timestamp = execSync(`git log -1 --format=%ct -- .`, {
       cwd: widgetDir,
       encoding: "utf-8",
       stdio: ["pipe", "pipe", "pipe"],
     }).trim();
+    if (timestamp) return parseInt(timestamp, 10);
+  } catch {
+    // ignore
+  }
+
+  // 2. Try git log from the parent repo (works for non-submodule paths)
+  try {
+    const relativePath = path.relative(ROOT_DIR, widgetDir);
+    const timestamp = execSync(
+      `git log -1 --format=%ct -- "${relativePath}"`,
+      { cwd: ROOT_DIR, encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] }
+    ).trim();
     if (timestamp) return parseInt(timestamp, 10);
   } catch {
     // ignore
