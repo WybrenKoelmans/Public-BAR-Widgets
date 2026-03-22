@@ -8,4 +8,5 @@ services:
     volumes:
       - ./build:/app/build
       - ./Widgets:/app/Widgets
+      - ./.git:/app/.git:ro
     profiles: ['tool'] # we don't want to run this with docker compose up
