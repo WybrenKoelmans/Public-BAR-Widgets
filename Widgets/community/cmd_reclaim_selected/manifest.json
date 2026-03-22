@@ -1,0 +1,9 @@
+{
+	"id": "cmd_reclaim_selected",
+	"version": "0.0.1",
+	"display_name": "Reclaim Selected",
+	"author": "manshanko",
+	"discord_link": null,
+	"github_link": "https://github.com/manshanko/bar-widgets?tab=readme-ov-file#reclaim-selected",
+	"description": "Reclaim selected units with nearby nano turrets."
+}
