@@ -1,0 +1,9 @@
+{
+	"id": "gui_gridmenu_cost_per_sec",
+	"version": "1.0.0",
+	"display_name": "Grid Menu with Costs/Second",
+	"author": "ChrisFloofyKitsune",
+	"discord_link": "https://discord.com/channels/549281623154229250/1255348256578342925",
+	"github_link": "https://github.com/ChrisFloofyKitsune/BAR-Widget-Build-Menu-With-Cost-Per-Second/blob/main/LuaUI/Widgets/gui_gridmenu_cost_per_sec.lua",
+	"description": "Grid Menu that adds in cost per second and build time info."
+}
